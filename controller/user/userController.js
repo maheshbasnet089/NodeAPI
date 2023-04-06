@@ -31,7 +31,7 @@ class UserController {
             bookBusId: bookedBus.id,
           });
           await sequelize.query(
-            `UPDATE busseats_${parseInt(req.body.id)} SET userId=${
+            `UPDATE busSeats_${parseInt(req.body.id)} SET userId=${
               req.userId
             } WHERE seat='${req.body.seats[i]}'`,
             { type: sequelize.QueryTypes.UPDATE }
