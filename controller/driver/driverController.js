@@ -539,3 +539,36 @@ exports.getPaymentDetails = async (req, res) => {
     payment,
   });
 };
+
+exports.updatePaymentStatus = async (req, res) => {
+  let payment;
+  if (req.body.status === "paid") {
+    payment = await BookBus.update(
+      {
+        status: "paid",
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+  } else {
+    payment = await BookBus.update(
+      {
+        status: "unpaid",
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+  }
+
+  res.json({
+    status: 200,
+    message: "Payment status was updated successfully!",
+    payment,
+  });
+};

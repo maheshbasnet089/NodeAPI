@@ -14,6 +14,7 @@ const {
   deleteBus,
   paymentVerify,
   getPaymentDetails,
+  updatePaymentStatus,
 } = require("../controller/driver/driverController");
 const { isAuthenticated } = require("../services/isAuthenticated");
 
@@ -55,6 +56,8 @@ router.route("/passenger").post(isAuthenticated, getPassengersDetails);
 
 router.route("/verifyPayment").post(isAuthenticated, paymentVerify);
 router.route("/paymentDetails").get(getPaymentDetails);
+
+router.route("/updateStatus/:id").post(updatePaymentStatus);
 
 router.route("/getAll").get(getAllData);
 module.exports = router;
